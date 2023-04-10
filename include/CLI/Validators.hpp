@@ -255,6 +255,21 @@ template <typename DesiredType> class TypeValidator : public Validator {
 /// Check for a number
 const TypeValidator<double> Number("NUMBER");
 
+/// Modify a value to remove escape squences.
+class EscapeTransformer : public Validator {
+  public:
+    // This removes escape sequences from the string.
+    EscapeTransformer() : Validator("ESCAPE") {
+        func_ = [](std::string &input) {
+            for(auto it = input.begin(); it != input.end(); ++it) {
+                if(*it == '\\' && it + 1 != input.end())
+                    it = input.erase(it);
+            }
+            return std::string();
+        };
+    }
+};
+
 /// Modify a path if the file is a particular default location, can be used as Check or transform
 /// with the error return optionally disabled
 class FileOnDefaultPath : public Validator {

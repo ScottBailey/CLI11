@@ -688,6 +688,8 @@ CLI11 has several Validators built-in that perform some common checks
 - `CLI::Number`: Requires the input be a number.
 - `CLI::ValidIPV4`: Requires that the option be a valid IPv4 string e.g.
   `'255.255.255.255'`, `'10.1.1.7'`.
+- `CLI::EscapeTransform`: Modify the input to remove escape (`\`) sequences.
+  See [Transforming Validators](#transforming-validators) for more details
 - `CLI::TypeValidator<TYPE>`:Requires that the option be convertible to the
   specified type e.g. `CLI::TypeValidator<unsigned int>()` would require that
   the input be convertible to an `unsigned int` regardless of the end
@@ -796,6 +798,7 @@ filters on the key values is performed.
   is returned normally but this can be disabled using
   `CLI::FileOnDefaultPath(default_path, false)`. This allows multiple paths to
   be chained using multiple transform calls.
+- `CLI::EscapeTransformer()`: Remove escape characters (`\`) from input.
 
 ##### Validator operations
 

@@ -39,6 +39,7 @@ set(CLI11_TESTS
     AppTest
     SetTest
     TransformTest
+    EscapeTransformerTest
     CreationTest
     SubcommandTest
     HelpTest
